@@ -1,0 +1,65 @@
+﻿@page "/admin/addemployee"
+@rendermode InteractiveServer
+
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using System.Text.Encodings.Web
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.WebUtilities
+@using ZiniTechERPSystem.Data
+@using System.Security.Claims
+
+@inject UserManager<ApplicationUser> UserManager
+@inject IUserStore<ApplicationUser> UserStore
+@inject SignInManager<ApplicationUser> SignInManager
+@inject IEmailSender<ApplicationUser> EmailSender
+@inject NavigationManager NavigationManager
+
+<PageTitle>Add Employee</PageTitle>
+
+<div class="row">
+    <div class="col-md-4">
+        @if (!string.IsNullOrEmpty(Message))
+        {
+            var statusMessageClass = Message.StartsWith("Error") ? "danger" : "success";
+            <div class="alert alert-@statusMessageClass" role="alert">
+                @Message
+            </div>
+        }
+        <EditForm Model="Input" asp-route-returnUrl="@ReturnUrl" method="post" OnValidSubmit="RegisterUser" FormName="register">
+            <DataAnnotationsValidator />
+            <h2>Add a new employee.</h2>
+            <hr />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label for="email">Email</label>
+                <ValidationMessage For="() => Input.Email" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputText type="password" @bind-Value="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label for="password">Password</label>
+                <ValidationMessage For="() => Input.Password" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputText type="password" @bind-Value="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label for="confirm-password">Confirm Password</label>
+                <ValidationMessage For="() => Input.ConfirmPassword" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputSelect id="company" class="form-control" @bind-Value="Input.CompanyId" aria-required="true">
+                    @if (companies != null)
+                    {
+                        @foreach (var company in companies)
+                        {
+                            <option value="@company.Id">@company.Name</option>
+                        }
+                    }
+                </InputSelect>
+                <label for="company">Company</label>
+                <ValidationMessage For="@(() => Input.CompanyId)" />
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Add Employee</button>
+        </EditForm>
+    </div>
+</div>

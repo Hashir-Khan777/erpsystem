@@ -1,0 +1,32 @@
+﻿@page "/employee/addcustomer"
+@using System.ComponentModel.DataAnnotations
+@rendermode InteractiveServer
+
+<PageTitle>Add Customer</PageTitle>
+
+<div class="row">
+    <div class="col-md-4">
+        <EditForm Model="@customer" method="post" OnValidSubmit="@CreateCustomer" FormName="customer">
+            <DataAnnotationsValidator />
+            <h2>Add a new customer.</h2>
+            <hr />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="customer.Name" class="form-control" aria-required="true" placeholder="Name" />
+                <label for="name">Name</label>
+                <ValidationMessage For="() => customer.Name" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="customer.Email" class="form-control" aria-required="true" placeholder="Email" />
+                <label for="email">Email</label>
+                <ValidationMessage For="() => customer.Email" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber @bind-Value="customer.PhoneNumber" class="form-control" aria-required="true" placeholder="Phone Number" />
+                <label for="phone">Phone Number</label>
+                <ValidationMessage For="() => customer.PhoneNumber" class="text-danger" />
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Add Customer</button>
+        </EditForm>
+    </div>
+</div>

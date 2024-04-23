@@ -1,0 +1,35 @@
+﻿@page "/admin/tasks"
+
+<PageTitle>Tasks</PageTitle>
+
+<div class="d-flex align-items-center justify-content-between">
+    <h1>Tasks</h1>
+    <NavLink href="/admin/addtask"><button class="btn btn-dark">Add</button></NavLink>
+</div>
+
+@if (tasks == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Todo</th>
+                <th>Description</th>
+                <th>Assignee</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in tasks)
+            {
+                <tr>
+                    <td>@task.Work</td>
+                    <td>@task.Description</td>
+                    <td>@task.Asignee?.UserName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

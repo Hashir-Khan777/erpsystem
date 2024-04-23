@@ -1,0 +1,53 @@
+﻿@page "/admin/logs"
+
+<PageTitle>Audit Logs</PageTitle>
+
+<div class="d-flex align-items-center justify-content-between">
+    <h1>Audit Logs</h1>
+</div>
+
+@if (auditLogs == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Table Name</th>
+                <th>Action Type</th>
+                <th>User Name</th>
+                <th>User Role</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var auditLog in auditLogs)
+            {
+                <tr>
+                    <td>@auditLog.EntityName</td>
+                    <td>@auditLog.ActionType</td>
+                    @if (auditLog.UserId is null)
+                    {
+                        <td>Auto</td>
+                    }
+                    else
+                    {
+                        <td>@auditLog.User?.UserName</td>
+                    }
+
+                    @if (auditLog.UserRole is null)
+                    {
+                        <td>Auto</td>
+                    }
+                    else
+                    {
+                        <td>@auditLog.UserRole</td>
+                    }
+                    <td>@auditLog.Timestamp</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

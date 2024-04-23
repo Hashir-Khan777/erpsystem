@@ -1,0 +1,40 @@
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using System.Security.Claims;
+using ZiniTechERPSystem.Components.Services;
+using ZiniTechERPSystem.Data;
+
+namespace ZiniTechERPSystem.Components.Employee.Pages
+{
+    public partial class TaskPage
+    {
+        public List<EmployeeTask> tasks = new List<EmployeeTask>();
+
+        [Inject]
+        private TaskService TaskService { get; set; }
+
+        [Inject]
+        private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+
+        protected override void OnInitialized()
+        {
+            GetTasks();
+        }
+
+        public async void GetTasks()
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            if (user.Identity is not null && user.Identity.IsAuthenticated)
+            {
+                var userId = user.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+                if (userId is not null)
+                {
+                    tasks = TaskService.GetTasksByEmployeeId(userId).ToList();
+                }
+            }
+        }
+    }
+}

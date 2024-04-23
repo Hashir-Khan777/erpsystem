@@ -1,0 +1,50 @@
+﻿@page "/admin/addproduct"
+@using System.ComponentModel.DataAnnotations
+@rendermode InteractiveServer
+
+<PageTitle>Add Product</PageTitle>
+
+<div class="row">
+    <div class="col-md-4">
+        <EditForm Model="@product" method="post" OnValidSubmit="@CreateProduct" FormName="product">
+            <DataAnnotationsValidator />
+            <h2>Add a new product.</h2>
+            <hr />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="product.Name" class="form-control" aria-required="true" placeholder="Name" />
+                <label for="name">Name</label>
+                <ValidationMessage For="() => product.Name" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="product.Make" class="form-control" aria-required="true" placeholder="Make" />
+                <label for="make">Make</label>
+                <ValidationMessage For="() => product.Make" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="product.Model" class="form-control" aria-required="true" placeholder="Model" />
+                <label for="model">Model</label>
+                <ValidationMessage For="() => product.Model" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber @bind-Value="product.Year" class="form-control" aria-required="true" placeholder="Year" />
+                <label for="year">Year</label>
+                <ValidationMessage For="() => product.Year" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputSelect id="company" class="form-control" @bind-Value="product.CompanyId">
+                    @if (companies != null)
+                    {
+                        @foreach (var company in companies)
+                        {
+                            <option value="@company.Id">@company.Name</option>
+                        }
+                    }
+                </InputSelect>
+                <label for="company">Company</label>
+                <ValidationMessage For="@(() => product.CompanyId)" />
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Add Product</button>
+        </EditForm>
+    </div>
+</div>

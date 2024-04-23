@@ -1,0 +1,40 @@
+﻿@page "/admin/addtask"
+@using System.ComponentModel.DataAnnotations
+@rendermode InteractiveServer
+
+<PageTitle>Add Task</PageTitle>
+
+<div class="row">
+    <div class="col-md-4">
+        <EditForm Model="@task" method="post" OnValidSubmit="@CreateTask" FormName="task">
+            <DataAnnotationsValidator />
+            <h2>Add a new task.</h2>
+            <hr />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="task.Work" class="form-control" aria-required="true" placeholder="Work" />
+                <label for="work">Work</label>
+                <ValidationMessage For="() => task.Work" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="task.Description" class="form-control" aria-required="true" placeholder="Email" />
+                <label for="description">Description</label>
+                <ValidationMessage For="() => task.Description" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputSelect id="company" class="form-control" @bind-Value="task.AsigneeId">
+                    @if (employees != null)
+                    {
+                        @foreach (var employee in employees)
+                        {
+                            <option value="@employee.Id">@employee.UserName</option>
+                        }
+                    }
+                </InputSelect>
+                <label for="asignee">Asignee</label>
+                <ValidationMessage For="@(() => task.AsigneeId)" />
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Add Task</button>
+        </EditForm>
+    </div>
+</div>

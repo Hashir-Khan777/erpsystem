@@ -1,0 +1,47 @@
+﻿@page "/manager/invoices"
+
+<PageTitle>Invoices</PageTitle>
+
+<div class="d-flex align-items-center justify-content-between">
+    <h1>Invoices</h1>
+    <NavLink href="/manager/addinvoice"><button class="btn btn-dark">Add</button></NavLink>
+</div>
+
+@if (invoices == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Company</th>
+                <th>CreatedBy</th>
+                <th>Customer</th>
+                <th>Products</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var invoice in invoices)
+            {
+                <tr>
+                    <td>@invoice.Quantity</td>
+                    <td>@invoice.Price</td>
+                    <td>@invoice.Company?.Name</td>
+                    <td>@invoice.CreatedBy?.UserName</td>
+                    <td>@invoice.Customer?.Name</td>
+                    @if (invoice.ProductInvoices is not null)
+                    {                        
+                        @foreach (var pi in invoice.ProductInvoices)
+                        {
+                            <td>@pi.Product?.Name,</td>
+                        }
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

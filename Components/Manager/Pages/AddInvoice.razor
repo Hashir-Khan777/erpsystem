@@ -1,0 +1,80 @@
+﻿@page "/manager/addinvoice"
+@using System.ComponentModel.DataAnnotations
+@rendermode InteractiveServer
+
+<PageTitle>Add Invoice</PageTitle>
+
+<div class="row">
+    <div class="col-md-4">
+        <EditForm Model="@invoice" method="post" OnValidSubmit="@CreateInvoice" FormName="invoice">
+            <DataAnnotationsValidator />
+            <h2>Add a new invoice.</h2>
+            <hr />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="form-floating mb-3">
+                <InputNumber @bind-Value="invoice.Quantity" class="form-control" aria-required="true" placeholder="Quantity" />
+                <label for="quantity">Quantity</label>
+                <ValidationMessage For="() => invoice.Quantity" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputNumber @bind-Value="invoice.Price" class="form-control" aria-required="true" placeholder="Price" />
+                <label for="price">Price</label>
+                <ValidationMessage For="() => invoice.Price" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputSelect id="company" class="form-control" @bind-Value="invoice.CompanyId">
+                    @if (companies != null)
+                    {
+                        @foreach (var company in companies)
+                        {
+                            <option value="@company.Id">@company.Name</option>
+                        }
+                    }
+                </InputSelect>
+                <label for="company">Company</label>
+                <ValidationMessage For="@(() => invoice.CompanyId)" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputSelect id="customer" class="form-control" @bind-Value="invoice.CustomerId">
+                    @if (customers != null)
+                    {
+                        @foreach (var customer in customers)
+                        {
+                            <option value="@customer.Id">@customer.Name</option>
+                        }
+                    }
+                </InputSelect>
+                <label for="customer">Customer</label>
+                <ValidationMessage For="@(() => invoice.Customer)" />
+            </div>
+            <div class="form-floating mb-3">
+                <input readonly id="products" value="@string.Join(", ", selectedProductNames)" class="form-control" @onclick="() => isDropDownOpen = !isDropDownOpen" />
+                @if (products != null && isDropDownOpen)
+                    {
+                    <div class="bg-white shadow p-3 mb-5 bg-white rounded">
+                            @foreach (var product in products)
+                            {
+                                <label class="mb-2 d-block">
+                                <input type="checkbox" value="@product.Id" @onchange="(e) => {  
+                                    if (e.Value is not null && (bool)e.Value)
+                                    {
+                                        selectedProducts.Add(product);
+                                        selectedProductNames.Add(product.Name);
+                                    }
+                                    else
+                                    {
+                                        selectedProducts.Remove(product);
+                                        selectedProductNames.Remove(product.Name);
+                                    }
+                                }" /> @product.Name
+                                </label>
+                            }
+                        </div>
+                    }
+                <label for="products">Products</label>
+                <ValidationMessage For="@(() => selectedProducts)" />
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Add Invoice</button>
+        </EditForm>
+    </div>
+</div>

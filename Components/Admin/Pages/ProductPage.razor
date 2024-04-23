@@ -1,0 +1,43 @@
+﻿@page "/admin/products"
+
+<PageTitle>Products</PageTitle>
+
+<div class="d-flex align-items-center justify-content-between">
+    <h1>Products</h1>
+    <NavLink href="/admin/addproduct"><button class="btn btn-dark">Add</button></NavLink>
+</div>
+
+@if (products == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Status</th>
+                <th>Company</th>
+                <th>Created By</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Make</td>
+                    <td>@product.Model</td>
+                    <td>@product.Year</td>
+                    <td>@product.Status</td>
+                    <td>@product.Company?.Name</td>
+                    <td>@product.CreatedBy?.UserName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

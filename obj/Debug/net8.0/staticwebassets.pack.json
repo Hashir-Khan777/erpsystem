@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\Zini Tecnologies Projects\\ZiniTechERPSystem\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ZiniTechERPSystem.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ZiniTechERPSystem.bundle.scp.css"
+    },
+    {
+      "Id": "E:\\Zini Tecnologies Projects\\ZiniTechERPSystem\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "E:\\Zini Tecnologies Projects\\ZiniTechERPSystem\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "E:\\Zini Tecnologies Projects\\ZiniTechERPSystem\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "E:\\Zini Tecnologies Projects\\ZiniTechERPSystem\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ZiniTechERPSystem.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ZiniTechERPSystem.props",
+      "PackagePath": "build\\ZiniTechERPSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ZiniTechERPSystem.props",
+      "PackagePath": "buildMultiTargeting\\ZiniTechERPSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ZiniTechERPSystem.props",
+      "PackagePath": "buildTransitive\\ZiniTechERPSystem.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

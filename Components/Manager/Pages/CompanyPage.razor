@@ -1,0 +1,35 @@
+﻿@page "/manager/companies"
+
+<PageTitle>Companies</PageTitle>
+
+<div class="d-flex align-items-center justify-content-between">
+    <h1>Companies</h1>
+    <NavLink href="/manager/addcompany"><button class="btn btn-dark">Add</button></NavLink>
+</div>
+
+@if (companies == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Manager</th>
+                <th>Employees</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var company in companies)
+            {
+                <tr>
+                    <td>@company.Name</td>
+                    <td>@company.Manager?.UserName</td>
+                    <td>@company.Employees?.Count()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

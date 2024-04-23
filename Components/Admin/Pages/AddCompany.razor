@@ -1,0 +1,35 @@
+﻿@page "/admin/addcompany"
+@using System.ComponentModel.DataAnnotations
+@rendermode InteractiveServer
+
+<PageTitle>Add Company</PageTitle>
+
+<div class="row">
+    <div class="col-md-4">
+        <EditForm Model="@company" method="post" OnValidSubmit="@CreateCompany" FormName="company">
+            <DataAnnotationsValidator />
+            <h2>Add a new company.</h2>
+            <hr />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="company.Name" class="form-control" aria-required="true" placeholder="Name" />
+                <label for="name">Name</label>
+                <ValidationMessage For="() => company.Name" class="text-danger" />
+            </div>
+            <div class="form-floating mb-3">
+                <InputSelect id="manager" class="form-control" @bind-Value="company.ManagerId">
+                    @if (managers != null)
+                    {
+                        @foreach (var manager in managers)
+                        {
+                            <option value="@manager.Id">@manager.UserName</option>
+                        }
+                    }
+                </InputSelect>
+                <label for="manager">Manager</label>
+                <ValidationMessage For="@(() => company.ManagerId)" />
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Add Comapny</button>
+        </EditForm>
+    </div>
+</div>

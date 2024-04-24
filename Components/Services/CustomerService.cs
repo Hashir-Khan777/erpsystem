@@ -32,5 +32,16 @@ namespace ZiniTechERPSystem.Components.Services
             db.Customers.Add(customer);
             db.SaveChanges();
         }
+
+        public void DeleteCustomer(int Id)
+        {
+            var customer = db.Customers.Find(Id);
+
+            if (customer is not null)
+            {
+                db.Customers.Remove(customer);
+                db.SaveChanges();
+            }
+        }
     }
 }

@@ -48,5 +48,15 @@ namespace ZiniTechERPSystem.Components.Services
                 return new ApplicationUser();
             }
         }
+
+        public void DeleteUser(string Id)
+        {
+            var user = db.Users.Find(Id);
+            if (user is not null)
+            {
+                db.Users.Remove(user);
+                db.SaveChanges();
+            }
+        }
     }
 }

@@ -27,5 +27,16 @@ namespace ZiniTechERPSystem.Components.Services
         {
             return db.Tasks.Where(t => t.AsigneeId == EmployeeId).Include(t => t.Asignee).ToList();
         }
+
+        public void DeleteTask(int Id)
+        {
+            var task = db.Tasks.Find(Id);
+
+            if (task is not null)
+            {
+                db.Tasks.Remove(task);
+                db.SaveChanges();
+            }
+        }
     }
 }

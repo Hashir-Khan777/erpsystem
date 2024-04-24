@@ -12,8 +12,7 @@ namespace ZiniTechERPSystem.Data
         [Required]
         public string Description { get; set; } = string.Empty;
 
-        [Required]
-        public string AsigneeId { get; set; } = string.Empty;
+        public string? AsigneeId { get; set; } = string.Empty;
 
         public ApplicationUser? Asignee { get; set; }
     }

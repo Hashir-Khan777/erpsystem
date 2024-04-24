@@ -20,5 +20,11 @@ namespace ZiniTechERPSystem.Components.Admin.Pages
         {
             customers = CustomerService.GetCustomers().ToList();
         }
+
+        public void DeleteCustomer(int Id)
+        {
+            CustomerService.DeleteCustomer(Id);
+            GetCustomners();
+        }
     }
 }

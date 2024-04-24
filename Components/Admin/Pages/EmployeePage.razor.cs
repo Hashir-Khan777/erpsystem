@@ -19,5 +19,11 @@ namespace ZiniTechERPSystem.Components.Admin.Pages
         {
             employees = EmployeeService.GetUsersByClaim("Role", "Employee").ToList();
         }
+
+        public void DeleteEmployee(string Id)
+        {
+            EmployeeService.DeleteUser(Id);
+            GetEmployees();
+        }
     }
 }

@@ -20,5 +20,11 @@ namespace ZiniTechERPSystem.Components.Admin.Pages
         {
             invoices = InvoiceService.GetInvoices().ToList();
         }
+
+        public void DeleteInvoice(int Id)
+        {
+            InvoiceService.DeleteInvoice(Id);
+            GetInvoices();
+        }
     }
 }

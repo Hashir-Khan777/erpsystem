@@ -19,6 +19,7 @@ else
                 <th>Name</th>
                 <th>Manager</th>
                 <th>Employees</th>
+                @* <th></th> *@
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,9 @@ else
                     <td>@company.Name</td>
                     <td>@company.Manager?.UserName</td>
                     <td>@company.Employees?.Count()</td>
+@*                     <td>
+                        <button class="btn btn-danger" @onclick="() => DeleteCompany(company.Id)">Delete</button>
+                    </td> *@
                 </tr>
             }
         </tbody>

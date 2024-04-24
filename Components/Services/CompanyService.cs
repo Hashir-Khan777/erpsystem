@@ -27,5 +27,16 @@ namespace ZiniTechERPSystem.Components.Services
             db.Companies.Add(company);
             db.SaveChanges();
         }
+
+        public void DeleteCompany(int Id)
+        {
+            var company = db.Companies.Find(Id);
+
+            if (company is not null)
+            {
+                db.Companies.Remove(company);
+                db.SaveChanges();
+            }
+        }
     }
 }

@@ -12,20 +12,17 @@ namespace ZiniTechERPSystem.Data
         [Required]
         public int Price { get; set; }
 
-        [Required]
-        public int CompanyId { get; set; }
+        public int? CompanyId { get; set; }
 
         public Company? Company { get; set; }
 
-        [Required]
-        public string CreatedById { get; set; } = string.Empty;
+        public string? CreatedById { get; set; } = string.Empty;
 
         public ApplicationUser? CreatedBy { get; set; }
 
         public Customer? Customer { get; set; }
 
-        [Required]
-        public int CustomerId { get; set; }
+        public int? CustomerId { get; set; }
 
         public List<ProductInvoice>? ProductInvoices { get; set; }
     }

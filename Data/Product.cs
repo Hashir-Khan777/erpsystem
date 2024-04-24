@@ -27,13 +27,11 @@ namespace ZiniTechERPSystem.Data
 
         public Status Status { get; set; } = Status.pending;
 
-        [Required]
-        public int CompanyId { get; set; }
+        public int? CompanyId { get; set; }
 
         public Company? Company { get; set; }
 
-        [Required]
-        public string CreatedById { get; set; } = string.Empty;
+        public string? CreatedById { get; set; } = string.Empty;
 
         public ApplicationUser? CreatedBy { get; set; }
 

@@ -22,6 +22,7 @@ else
                 <th>CreatedBy</th>
                 <th>Customer</th>
                 <th>Products</th>
+                @* <th></th> *@
             </tr>
         </thead>
         <tbody>
@@ -33,13 +34,18 @@ else
                     <td>@invoice.Company?.Name</td>
                     <td>@invoice.CreatedBy?.UserName</td>
                     <td>@invoice.Customer?.Name</td>
-                    @if (invoice.ProductInvoices is not null)
-                    {                        
-                        @foreach (var pi in invoice.ProductInvoices)
-                        {
-                            <td>@pi.Product?.Name,</td>
+                    <td>
+                        @if (invoice.ProductInvoices is not null)
+                        {                        
+                            @foreach (var pi in invoice.ProductInvoices)
+                            {
+                                <span>@pi.Product?.Name,</span>
+                            }
                         }
-                    }
+                    </td>
+@*                     <td>
+                        <button class="btn btn-danger" @onclick="() => DeleteInvoice(invoice.Id)">Delete</button>
+                    </td> *@
                 </tr>
             }
         </tbody>

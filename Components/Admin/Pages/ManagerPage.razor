@@ -1,4 +1,5 @@
 ﻿@page "/admin/managers"
+@rendermode InteractiveServer
 
 <PageTitle>Managers</PageTitle>
 
@@ -19,6 +20,7 @@ else
                 <th>Name</th>
                 <th>Email</th>
                 <th>Companies</th>
+                @* <th></th> *@
             </tr>
         </thead>
         <tbody>
@@ -36,6 +38,9 @@ else
                             }
                         }
                     </td>
+@*                     <td>
+                        <button class="btn btn-danger" @onclick="() => DeleteManager(manager.Id)">Delete</button>
+                    </td> *@
                 </tr>
             }
         </tbody>

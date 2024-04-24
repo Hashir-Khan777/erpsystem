@@ -20,5 +20,11 @@ namespace ZiniTechERPSystem.Components.Admin.Pages
         {
             tasks = TaskService.GetTasks().ToList();
         }
+
+        public void DeleteTask(int Id)
+        {
+            TaskService.DeleteTask(Id);
+            GetTasks();
+        }
     }
 }

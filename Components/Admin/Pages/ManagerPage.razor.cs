@@ -27,6 +27,12 @@ namespace ZiniTechERPSystem.Components.Admin.Pages
             managers = ManagerService.GetUsersByClaim("Role", "Manager").ToList();
         }
 
+        public void DeleteManager(string Id)
+        {
+            ManagerService.DeleteUser(Id);
+            GetManagers();
+        }
+
         public async Task<string> GetCurrentUserId()
         {
             var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();

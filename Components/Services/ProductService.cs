@@ -45,5 +45,16 @@ namespace ZiniTechERPSystem.Components.Services
             db.Products.Add(product);
             db.SaveChanges();
         }
+
+        public void DeleteProduct(int Id)
+        {
+            var product = db.Products.Find(Id);
+
+            if (product is not null)
+            {
+                db.Products.Remove(product);
+                db.SaveChanges();
+            }
+        }
     }
 }

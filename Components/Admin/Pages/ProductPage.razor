@@ -23,6 +23,7 @@ else
                 <th>Status</th>
                 <th>Company</th>
                 <th>Created By</th>
+                @* <th></th> *@
             </tr>
         </thead>
         <tbody>
@@ -36,6 +37,9 @@ else
                     <td>@product.Status</td>
                     <td>@product.Company?.Name</td>
                     <td>@product.CreatedBy?.UserName</td>
+@*                     <td>
+                        <button class="btn btn-danger" @onclick="() => DeleteProduct(product.Id)">Delete</button>
+                    </td> *@
                 </tr>
             }
         </tbody>

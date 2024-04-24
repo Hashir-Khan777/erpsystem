@@ -12,7 +12,7 @@ using ZiniTechERPSystem.Data;
 namespace ZiniTechERPSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240423183618_Init")]
+    [Migration("20240424191320_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -269,7 +269,6 @@ namespace ZiniTechERPSystem.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ManagerId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
@@ -291,11 +290,10 @@ namespace ZiniTechERPSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CompanyId")
+                    b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedById")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
@@ -327,7 +325,6 @@ namespace ZiniTechERPSystem.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AsigneeId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
@@ -353,14 +350,13 @@ namespace ZiniTechERPSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CompanyId")
+                    b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedById")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<int>("Price")
@@ -388,11 +384,10 @@ namespace ZiniTechERPSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CompanyId")
+                    b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedById")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Make")
@@ -424,10 +419,10 @@ namespace ZiniTechERPSystem.Migrations
 
             modelBuilder.Entity("ZiniTechERPSystem.Data.ProductInvoice", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("InvoiceId")
+                    b.Property<int?>("InvoiceId")
                         .HasColumnType("int");
 
                     b.Property<int>("Id")
@@ -513,8 +508,7 @@ namespace ZiniTechERPSystem.Migrations
                 {
                     b.HasOne("ZiniTechERPSystem.Data.ApplicationUser", "Manager")
                         .WithMany("Companies")
-                        .HasForeignKey("ManagerId")
-                        .IsRequired();
+                        .HasForeignKey("ManagerId");
 
                     b.Navigation("Manager");
                 });
@@ -523,13 +517,11 @@ namespace ZiniTechERPSystem.Migrations
                 {
                     b.HasOne("ZiniTechERPSystem.Data.Company", "Company")
                         .WithMany("Customers")
-                        .HasForeignKey("CompanyId")
-                        .IsRequired();
+                        .HasForeignKey("CompanyId");
 
                     b.HasOne("ZiniTechERPSystem.Data.ApplicationUser", "CreatedBy")
                         .WithMany("Customers")
-                        .HasForeignKey("CreatedById")
-                        .IsRequired();
+                        .HasForeignKey("CreatedById");
 
                     b.Navigation("Company");
 
@@ -540,8 +532,7 @@ namespace ZiniTechERPSystem.Migrations
                 {
                     b.HasOne("ZiniTechERPSystem.Data.ApplicationUser", "Asignee")
                         .WithMany("AssignedTasks")
-                        .HasForeignKey("AsigneeId")
-                        .IsRequired();
+                        .HasForeignKey("AsigneeId");
 
                     b.Navigation("Asignee");
                 });
@@ -550,18 +541,15 @@ namespace ZiniTechERPSystem.Migrations
                 {
                     b.HasOne("ZiniTechERPSystem.Data.Company", "Company")
                         .WithMany("Invoices")
-                        .HasForeignKey("CompanyId")
-                        .IsRequired();
+                        .HasForeignKey("CompanyId");
 
                     b.HasOne("ZiniTechERPSystem.Data.ApplicationUser", "CreatedBy")
                         .WithMany("Invoices")
-                        .HasForeignKey("CreatedById")
-                        .IsRequired();
+                        .HasForeignKey("CreatedById");
 
                     b.HasOne("ZiniTechERPSystem.Data.Customer", "Customer")
                         .WithMany("Invoices")
-                        .HasForeignKey("CustomerId")
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.Navigation("Company");
 
@@ -574,13 +562,11 @@ namespace ZiniTechERPSystem.Migrations
                 {
                     b.HasOne("ZiniTechERPSystem.Data.Company", "Company")
                         .WithMany("Products")
-                        .HasForeignKey("CompanyId")
-                        .IsRequired();
+                        .HasForeignKey("CompanyId");
 
                     b.HasOne("ZiniTechERPSystem.Data.ApplicationUser", "CreatedBy")
                         .WithMany("Products")
-                        .HasForeignKey("CreatedById")
-                        .IsRequired();
+                        .HasForeignKey("CreatedById");
 
                     b.Navigation("Company");
 

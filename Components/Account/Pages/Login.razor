@@ -9,6 +9,7 @@
 @inject ILogger<Login> Logger
 @inject NavigationManager NavigationManager
 @inject IdentityRedirectManager RedirectManager
+@inject LogService LogService
 
 <PageTitle>Log in</PageTitle>
 
@@ -92,6 +93,7 @@
         var result = await SignInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         if (result.Succeeded)
         {
+            LogService.CreateLog(new AuditLog { UserId = null, UserRole = null, ActionType = "LoggedIn", EntityName = "ApplicationUser", Timestamp = DateTime.Now });
             Logger.LogInformation("User logged in.");
             RedirectManager.RedirectTo("/");
         }

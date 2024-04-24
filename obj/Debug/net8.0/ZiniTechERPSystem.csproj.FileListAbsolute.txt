@@ -294,3 +294,4 @@ E:\Zini Tecnologies Projects\ZiniTechERPSystem\obj\Debug\net8.0\refint\ZiniTechE
 E:\Zini Tecnologies Projects\ZiniTechERPSystem\obj\Debug\net8.0\ZiniTechERPSystem.pdb
 E:\Zini Tecnologies Projects\ZiniTechERPSystem\obj\Debug\net8.0\ZiniTechERPSystem.genruntimeconfig.cache
 E:\Zini Tecnologies Projects\ZiniTechERPSystem\obj\Debug\net8.0\ref\ZiniTechERPSystem.dll
+E:\Zini Tecnologies Projects\ZiniTechERPSystem\obj\Debug\net8.0\ZiniTechERPSystem.sourcelink.json

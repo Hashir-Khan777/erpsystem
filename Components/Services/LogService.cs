@@ -18,9 +18,14 @@ namespace ZiniTechERPSystem.Components.Services
             db.SaveChanges();
         }
 
-        public List<AuditLog> GetLogs()
+        public List<AuditLog> GetLogs(double Page)
         {
-            return db.Logs.Include(l => l.User).ToList();
+            return db.Logs.Skip(((int)Page - 1) * 5).Take(5).Include(l => l.User).ToList();
+        }
+
+        public int GetTotalLogsCount()
+        {
+            return db.Logs.ToList().Count();
         }
     }
 }

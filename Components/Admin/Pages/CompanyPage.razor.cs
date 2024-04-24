@@ -19,5 +19,11 @@ namespace ZiniTechERPSystem.Components.Admin.Pages
         {
             companies = CompanyService.GetCompanies().ToList();
         }
+
+        public void DeleteCompany(int Id)
+        {
+            CompanyService.DeleteCompany(Id);
+            GetCompanies();
+        }
     }
 }

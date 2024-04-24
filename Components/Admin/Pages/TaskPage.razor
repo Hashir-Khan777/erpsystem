@@ -19,6 +19,7 @@ else
                 <th>Todo</th>
                 <th>Description</th>
                 <th>Assignee</th>
+                @* <th></th> *@
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,9 @@ else
                     <td>@task.Work</td>
                     <td>@task.Description</td>
                     <td>@task.Asignee?.UserName</td>
+@*                     <td>
+                        <button class="btn btn-danger" @onclick="() => DeleteTask(task.Id)">Delete</button>
+                    </td> *@
                 </tr>
             }
         </tbody>

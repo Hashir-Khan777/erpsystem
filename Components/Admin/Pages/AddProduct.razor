@@ -33,6 +33,7 @@
             </div>
             <div class="form-floating mb-3">
                 <InputSelect id="company" class="form-control" @bind-Value="product.CompanyId">
+                    <option value="0">Select Company</option>
                     @if (companies != null)
                     {
                         @foreach (var company in companies)

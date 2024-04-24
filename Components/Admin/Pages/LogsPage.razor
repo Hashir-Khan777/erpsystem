@@ -1,4 +1,5 @@
 ﻿@page "/admin/logs"
+@rendermode InteractiveServer
 
 <PageTitle>Audit Logs</PageTitle>
 
@@ -50,4 +51,14 @@ else
             }
         </tbody>
     </table>
+    <nav aria-label="Page navigation example m-auto">
+      <ul class="pagination">
+        <li class="page-item"><button class="page-link" @onclick="() => Paginate(false, 0)">Previous</button></li>
+        @foreach (var pageNum in totalPages)
+        {
+            <li class="page-item"><button class="page-link" @onclick="() => Paginate(null, pageNum)">@pageNum</button></li>
+        }
+        <li class="page-item"><button @onclick="() => Paginate(true, 0)" class="page-link">Next</button></li>
+      </ul>
+    </nav>
 }

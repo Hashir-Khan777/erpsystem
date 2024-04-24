@@ -44,5 +44,16 @@ namespace ZiniTechERPSystem.Components.Services
                 db.SaveChanges();
             }
         }
+
+        public void DeleteInvoice(int Id)
+        {
+            var invoice = db.Invoices.Find(Id);
+
+            if (invoice is not null)
+            {
+                db.Invoices.Remove(invoice);
+                db.SaveChanges();
+            }
+        }
     }
 }

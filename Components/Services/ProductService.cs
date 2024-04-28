@@ -17,7 +17,7 @@ namespace ZiniTechERPSystem.Components.Services
             return db.Products.Include(c => c.Company).Include(c => c.CreatedBy).ToList();
         }
 
-        public Product GetProductById(int ProductId)
+        public Product GetProductById(string ProductId)
         {
             var product = db.Products.FirstOrDefault(p => p.Id == ProductId);
             if (product is not null)
@@ -35,7 +35,7 @@ namespace ZiniTechERPSystem.Components.Services
             return db.Products.Where(p => p.Company.ManagerId == ManagerId).Include(c => c.Company).Include(c => c.CreatedBy).ToList();
         }
 
-        public List<Product> GetProductsByCompanyId(int? CompanyId)
+        public List<Product> GetProductsByCompanyId(string? CompanyId)
         {
             return db.Products.Where(p => p.Company.Id == CompanyId).Include(c => c.Company).Include(c => c.CreatedBy).ToList();
         }

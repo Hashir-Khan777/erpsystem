@@ -62,7 +62,7 @@ namespace ZiniTechERPSystem.Components.Employee.Pages
 
                 if (userId is not null)
                 {
-                    int? companyId = UserService.GetUserById(userId)?.CompanyId;
+                    string? companyId = UserService.GetUserById(userId)?.CompanyId;
                     customers = CustomerService.GetCustomersByCompanyId(companyId).ToList();
                 }
             }
@@ -79,7 +79,7 @@ namespace ZiniTechERPSystem.Components.Employee.Pages
 
                 if (userId is not null)
                 {
-                    int? companyId = UserService.GetUserById(userId)?.CompanyId;
+                    string? companyId = UserService.GetUserById(userId)?.CompanyId;
                     products = ProductService.GetProductsByCompanyId(companyId).ToList();
                 }
             }
@@ -100,7 +100,7 @@ namespace ZiniTechERPSystem.Components.Employee.Pages
                     invoice.CreatedById = userId;
                     if (companyId is not null)
                     {
-                        invoice.CompanyId = (int)companyId;
+                        invoice.CompanyId = companyId;
                     }
                 }
             }

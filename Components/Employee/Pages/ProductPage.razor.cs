@@ -35,7 +35,7 @@ namespace ZiniTechERPSystem.Components.Employee.Pages
 
                 if (userId is not null)
                 {
-                    int? companyId = UserService.GetUserById(userId)?.CompanyId;
+                    string? companyId = UserService.GetUserById(userId)?.CompanyId;
                     products = ProductService.GetProductsByCompanyId(companyId).ToList();
                 }
             }

@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.CodeAnalysis;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
@@ -41,13 +43,18 @@ namespace ZiniTechERPSystem.Data
 
             foreach (var entry in entries)
             {
+                var entityId = entry.Property("Id").CurrentValue;
+                var entityTableName = entry.Metadata.GetTableName();
+                var sql = $"SELECT Value FROM (SELECT Id, CAST (ROW_NUMBER() OVER(ORDER BY Id) AS int) AS Value FROM {entityTableName}) AS d WHERE d.Id = '{entityId}'";
+                var rowNumber = this.Database.SqlQueryRaw<int>(sql).FirstOrDefault();
                 var auditEntry = new AuditLog
                 {
                     UserId = UserId,
                     UserRole = UserRole,
                     EntityName = entry.Entity.GetType().Name,
                     ActionType = entry.State.ToString(),
-                    Timestamp = DateTime.Now
+                    RowNumber = rowNumber,
+                    Timestamp = DateTime.UtcNow
                 };
 
                 Logs.Add(auditEntry);
@@ -62,7 +69,7 @@ namespace ZiniTechERPSystem.Data
 
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
-            AuditChanges();
+            AuditChanges();   
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 

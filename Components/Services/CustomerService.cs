@@ -22,7 +22,7 @@ namespace ZiniTechERPSystem.Components.Services
             return db.Customers.Where(c => c.Company.ManagerId == ManagerId).Include(c => c.CreatedBy).Include(c => c.Company).ToList();
         }
 
-        public List<Customer> GetCustomersByCompanyId(int? CompanyId)
+        public List<Customer> GetCustomersByCompanyId(string? CompanyId)
         {
             return db.Customers.Where(c => c.Company.Id == CompanyId).Include(c => c.CreatedBy).Include(c => c.Company).ToList();
         }

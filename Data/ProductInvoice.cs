@@ -1,11 +1,14 @@
-﻿namespace ZiniTechERPSystem.Data
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ZiniTechERPSystem.Data
 {
     public class ProductInvoice
     {
-        public int Id { get; set; }
-        public int? ProductId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string Id { get; set; }
+        public string? ProductId { get; set; }
         public Product? Product { get; set; }
-        public int? InvoiceId { get; set; }
+        public string? InvoiceId { get; set; }
         public Invoice? Invoice { get; set; }
     }
 }

@@ -93,7 +93,7 @@
         var result = await SignInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         if (result.Succeeded)
         {
-            LogService.CreateLog(new AuditLog { UserId = null, UserRole = null, ActionType = "LoggedIn", EntityName = "ApplicationUser", Timestamp = DateTime.Now });
+            LogService.CreateLog(new AuditLog { UserId = null, UserRole = null, RowNumber = null, ActionType = "LoggedIn", EntityName = "ApplicationUser", Timestamp = DateTime.UtcNow });
             Logger.LogInformation("User logged in.");
             RedirectManager.RedirectTo("/");
         }

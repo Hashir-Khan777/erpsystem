@@ -53,7 +53,7 @@ namespace ZiniTechERPSystem.Components.Employee.Pages
                     product.CreatedById = userId;
                     if (companyId is not null)
                     {
-                        product.CompanyId = (int)companyId;
+                        product.CompanyId = companyId;
                     }
                 }
             }

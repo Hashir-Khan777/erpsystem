@@ -28,7 +28,7 @@ namespace ZiniTechERPSystem.Components.Services
             db.SaveChanges();
         }
 
-        public List<Invoice> GetInvoicesByCompanyId(int? CompanyId)
+        public List<Invoice> GetInvoicesByCompanyId(string? CompanyId)
         {
             return db.Invoices.Where(i => i.Company.Id == CompanyId).Include(i => i.ProductInvoices).ThenInclude(pi => pi.Product).Include(i => i.Company).Include(i => i.CreatedBy).Include(i => i.Customer).ToList();
         }

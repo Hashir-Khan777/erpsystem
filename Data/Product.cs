@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ZiniTechERPSystem.Data
 {
@@ -11,7 +12,8 @@ namespace ZiniTechERPSystem.Data
 
     public class Product
     {
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string Id { get; set; }
 
         [Required]
         public string Name { get; set; } = string.Empty;
@@ -27,7 +29,7 @@ namespace ZiniTechERPSystem.Data
 
         public Status Status { get; set; } = Status.pending;
 
-        public int? CompanyId { get; set; }
+        public string? CompanyId { get; set; }
 
         public Company? Company { get; set; }
 

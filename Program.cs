@@ -22,6 +22,7 @@ builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<InvoiceService>();
 builder.Services.AddScoped<TaskService>();
 builder.Services.AddScoped<LogService>();
+builder.Services.AddScoped<ExcelService>();
 builder.Services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
 
 builder.Services.AddAuthorization(options =>

@@ -100,7 +100,7 @@ namespace ZiniTechERPSystem.Components.Admin.Pages
             public string ConfirmPassword { get; set; } = "";
 
             [Required]
-            public int CompanyId { get; set; }
+            public string CompanyId { get; set; }
         }
     }
 }

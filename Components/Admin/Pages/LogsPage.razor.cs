@@ -7,6 +7,7 @@ namespace ZiniTechERPSystem.Components.Admin.Pages
     public partial class LogsPage
     {
         private List<AuditLog> auditLogs = new List<AuditLog>();
+        public int totalRows = 10;
         public double Page = 1;
         public double totalLogsCount = 0;
         public List<double> totalPages = new List<double>();
@@ -14,12 +15,15 @@ namespace ZiniTechERPSystem.Components.Admin.Pages
         [Inject]
         private LogService LogService { get; set; }
 
+        [Inject]
+        private ExcelService ExcelService { get; set; }
+
         protected override void OnInitialized()
         {
             GetLogs();
             GetTotalLogsCount();
 
-            for(int i = 1; i <= Math.Round(totalLogsCount / 5); i++)
+            for(int i = 1; i <= Math.Round(totalLogsCount / totalRows); i++)
             {
                 totalPages.Add(i);
             }
@@ -27,7 +31,12 @@ namespace ZiniTechERPSystem.Components.Admin.Pages
 
         private void GetLogs()
         {
-            auditLogs = LogService.GetLogs(Page).ToList();
+            auditLogs = LogService.GetLogs(Page, totalRows).ToList();
+        }
+
+        private void ExportData()
+        {
+            ExcelService.ExportToExcel(auditLogs);
         }
 
         public void Paginate(bool? next, double page)

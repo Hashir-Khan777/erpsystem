@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ZiniTechERPSystem.Data
 {
     public class Customer
     {
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string Id { get; set; }
 
         [Required]
         public string Name { get; set; } = string.Empty;
@@ -15,7 +17,7 @@ namespace ZiniTechERPSystem.Data
         [Required]
         public int PhoneNumber { get; set; }
 
-        public int? CompanyId { get; set; }
+        public string? CompanyId { get; set; }
 
         public Company? Company { get; set; }
 

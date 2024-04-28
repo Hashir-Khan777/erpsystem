@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using ZiniTechERPSystem.Data;
 
 namespace ZiniTechERPSystem.Components.Services
@@ -18,9 +19,9 @@ namespace ZiniTechERPSystem.Components.Services
             db.SaveChanges();
         }
 
-        public List<AuditLog> GetLogs(double Page)
+        public List<AuditLog> GetLogs(double Page, int TotalRows)
         {
-            return db.Logs.Skip(((int)Page - 1) * 5).Take(5).Include(l => l.User).ToList();
+            return db.Logs.Skip(((int)Page - 1) * TotalRows).Take(TotalRows).Include(l => l.User).ToList();
         }
 
         public int GetTotalLogsCount()

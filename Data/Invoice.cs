@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ZiniTechERPSystem.Data
 {
     public class Invoice
     {
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string Id { get; set; }
 
         [Required]
         public int Quantity { get; set; }
@@ -12,7 +14,7 @@ namespace ZiniTechERPSystem.Data
         [Required]
         public int Price { get; set; }
 
-        public int? CompanyId { get; set; }
+        public string? CompanyId { get; set; }
 
         public Company? Company { get; set; }
 
@@ -22,7 +24,7 @@ namespace ZiniTechERPSystem.Data
 
         public Customer? Customer { get; set; }
 
-        public int? CustomerId { get; set; }
+        public string? CustomerId { get; set; }
 
         public List<ProductInvoice>? ProductInvoices { get; set; }
     }

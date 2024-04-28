@@ -295,3 +295,8 @@ E:\Zini Tecnologies Projects\ZiniTechERPSystem\obj\Debug\net8.0\ZiniTechERPSyste
 E:\Zini Tecnologies Projects\ZiniTechERPSystem\obj\Debug\net8.0\ZiniTechERPSystem.genruntimeconfig.cache
 E:\Zini Tecnologies Projects\ZiniTechERPSystem\obj\Debug\net8.0\ref\ZiniTechERPSystem.dll
 E:\Zini Tecnologies Projects\ZiniTechERPSystem\obj\Debug\net8.0\ZiniTechERPSystem.sourcelink.json
+E:\Zini Tecnologies Projects\ZiniTechERPSystem\bin\Debug\net8.0\EPPlus.dll
+E:\Zini Tecnologies Projects\ZiniTechERPSystem\bin\Debug\net8.0\EPPlus.Interfaces.dll
+E:\Zini Tecnologies Projects\ZiniTechERPSystem\bin\Debug\net8.0\EPPlus.System.Drawing.dll
+E:\Zini Tecnologies Projects\ZiniTechERPSystem\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
+E:\Zini Tecnologies Projects\ZiniTechERPSystem\bin\Debug\net8.0\OfficeOpenXml.Extension.AspNetCore.dll

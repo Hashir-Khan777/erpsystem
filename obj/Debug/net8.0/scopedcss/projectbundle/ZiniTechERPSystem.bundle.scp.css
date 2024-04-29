@@ -11,6 +11,7 @@ main[b-8fzkn2uwo9] {
 
 .sidebar[b-8fzkn2uwo9] {
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    transition: all linear 0.7s;
 }
 
 .top-row[b-8fzkn2uwo9] {
@@ -94,6 +95,16 @@ main[b-8fzkn2uwo9] {
     position: absolute;
     right: 0.75rem;
     top: 0.5rem;
+}
+
+.hamburger[b-8fzkn2uwo9] {
+    display: none;
+}
+
+@media (min-width: 641px) {
+    .hamburger[b-8fzkn2uwo9] {
+        display: block;
+    }
 }
 /* _content/ZiniTechERPSystem/Components/Admin/Shared/AdminNavMenu.razor.rz.scp.css */
 .navbar-toggler[b-41uoy2vli5] {

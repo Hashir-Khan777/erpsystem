@@ -14,7 +14,8 @@
 }
 else
 {
-    <table class="table table-striped">
+    <div class="table-responsive">
+        <table class="table table-striped">
         <thead>
             <tr>
                 <th>Table Name</th>
@@ -54,6 +55,7 @@ else
             }
         </tbody>
     </table>
+    </div>
     <nav aria-label="Page navigation example m-auto">
       <ul class="pagination">
         <li class="page-item"><button class="page-link" @onclick="() => Paginate(false, 0)">Previous</button></li>

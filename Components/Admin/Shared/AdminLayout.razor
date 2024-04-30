@@ -4,16 +4,16 @@
 
 <div class="page">
     <div class="sidebar" style="@MyStyle">
-        <AdminNavMenu />
+        <AdminNavMenu CloseSidebar="() => toggleSidebar(true)" />
     </div>
 
     <main>
         <div class="top-row px-4 justify-content-between">
             <AuthorizeView Policy="Admin">
-                <div class="nav-item px-3 hamburger">
-                    <button class="navbar-toggler" type="button" data-mdb-collapse-init
+                <div class="nav-item hamburger">
+                    <button class="navbar-toggler p-0" type="button" data-mdb-collapse-init
                             data-mdb-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                            aria-expanded="false" aria-label="Toggle navigation" @onclick="toggleSidebar">
+                            aria-expanded="false" aria-label="Toggle navigation" @onclick="() => toggleSidebar(null)">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                 </div>
@@ -60,9 +60,16 @@
         StateHasChanged();
     }
 
-    private void toggleSidebar()
+    private void toggleSidebar(bool? open)
     {
-        expand = !expand;
+        if (open is not null)
+        {
+            expand = (bool)open;
+        }
+        else
+        {
+            expand = !expand;
+        }
 
         if (expand)
         {

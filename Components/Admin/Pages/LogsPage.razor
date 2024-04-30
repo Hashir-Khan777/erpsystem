@@ -3,6 +3,13 @@
 
 <PageTitle>Audit Logs</PageTitle>
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Admin</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Logs</li>
+    </ol>
+</nav>
+
 <div class="d-flex align-items-center justify-content-between">
     <h1>Audit Logs</h1>
     <button class="btn btn-dark" @onclick="ExportData">Export To Excel</button>
@@ -20,7 +27,7 @@ else
             <tr>
                 <th>Table Name</th>
                 <th>Action Type</th>
-                <th>Row Number</th>
+                <th>Id</th>
                 <th>User Name</th>
                 <th>User Role</th>
                 <th>Created At</th>
@@ -32,7 +39,7 @@ else
                 <tr>
                     <td>@auditLog.EntityName</td>
                     <td>@auditLog.ActionType</td>
-                    <td>@auditLog.RowNumber</td>
+                    <td>@auditLog.Id</td>
                     @if (auditLog.UserId is null)
                     {
                         <td>Auto</td>

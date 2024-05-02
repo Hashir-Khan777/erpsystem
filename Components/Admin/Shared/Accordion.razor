@@ -1,0 +1,105 @@
+﻿@rendermode InteractiveServer
+
+<style>
+    .accordion-button::after {
+        content: "\f078";
+        font-family: "FontAwesome";
+        transform: rotate(0deg) !important;
+    }
+
+    .acc-nav-item {
+        font-size: 0.9rem;
+        padding-bottom: 0.5rem;
+    }
+
+        .acc-nav-item:first-of-type {
+            padding-top: 1rem;
+        }
+
+        .acc-nav-item:last-of-type {
+            padding-bottom: 1rem;
+        }
+
+        .acc-nav-item .nav-link {
+            color: #d7d7d7;
+            background: none;
+            border: none;
+            border-radius: 4px;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            line-height: 3rem;
+            width: 100%;
+        }
+
+        .acc-nav-item a.active {
+            background-color: rgba(255,255,255,0.37);
+            color: white;
+        }
+</style>
+
+<div class="accordion acc-nav-item">
+    @foreach (var item in Items)
+    {
+        <div class="accordion-item acc-nav-item bg-transparent border-0">
+            <h2 class="accordion-header bg-transparent">
+                <button class="shadow-none accordion-button bg-transparent text-white" @onclick="() => ToggleItem(item)">
+                    @item.Title
+                </button>
+            </h2>
+            @if (item.IsOpen)
+            {
+                <div class="accordion-collapse collapse show">
+                    @foreach (var link in item.Links)
+                    {
+                        <div class="acc-nav-item px-3">
+                            <NavLink class="nav-link text-white" href="@link.Url" Match="NavLinkMatch.All">
+                                @link.Page
+                            </NavLink>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    public List<AccordionItem> Items { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Items = new List<AccordionItem>
+        {
+            new AccordionItem 
+            {
+                Title = "Page Group 1",
+                Links = new List<SubLink>
+                {
+                    new SubLink { Page = "Managers", Url = "/admin/managers" },
+                    new SubLink { Page = "Companies", Url = "/admin/companies" },
+                    new SubLink { Page = "Employees", Url = "/admin/employees" },
+                    new SubLink { Page = "Products", Url = "/admin/products" },
+                }
+            },
+        };
+    }
+
+    void ToggleItem(AccordionItem item)
+    {
+        item.IsOpen = !item.IsOpen;
+    }
+
+    public class AccordionItem
+    {
+        public string Title { get; set; }
+        public List<SubLink> Links { get; set; }
+        public bool IsOpen { get; set; }
+    }
+
+    public class SubLink
+    {
+        public string Url { get; set; }
+        public string Page { get; set; }
+    }
+}

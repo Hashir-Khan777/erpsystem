@@ -4,8 +4,7 @@ namespace ZiniTechERPSystem.Data
 {
     public class AuditLog
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string EntityName { get; set; } = string.Empty;
 

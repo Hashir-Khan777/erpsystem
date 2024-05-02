@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ZiniTechERPSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f18cd5598d7fa4fc970ee017477f1cffc812cb35")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63b6b90beb0083dad068188305cf6c098aa12491")]
 [assembly: System.Reflection.AssemblyProductAttribute("ZiniTechERPSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ZiniTechERPSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
